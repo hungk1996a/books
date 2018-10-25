@@ -36,5 +36,11 @@ class BookController {
             .then(data => res.send('success'))
             .catch(next);
     }
+
+    search(req, res, next) {
+        req.app.get('factory').search(req.condition)
+            .then(data => res.send(data.map(data => data.toJson())))
+            .catch(next);
+    }
 }
 module.exports = BookController;

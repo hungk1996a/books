@@ -12,6 +12,9 @@ router.put('/:id', bookRequest.checkBook, bookController.updateBook);
 
 router.delete('/:id', bookRequest.checkBook, bookController.deleteBook);
 
-router.get('/get', bookController.joinBook);
+router.get('/books', bookRequest.checkSearch, bookController.search);
+router.get('/book/:id', bookRequest.checkSearch, bookController.search);
+router.get('/search-advance', bookRequest.checkSearch, bookController.search);
+router.get('/search-basic', bookRequest.checkSearch, bookController.search);
 
 module.exports = router;
