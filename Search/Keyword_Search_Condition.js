@@ -5,7 +5,7 @@ class KeywordSearchCondition {
 
     describe(sqlQuery) {
         let keyword = this.keyword;
-        return sqlQuery.where(() => {
+        return sqlQuery.where(function() {
             this.where('title', 'like', '%' + keyword + '%')
                 .orWhere('author', 'like', '%' + keyword + '%')
                 .orWhere('publisher.name', 'like', '%' + keyword + '%')
