@@ -12,4 +12,6 @@ router.put('/:id', bookRequest.checkBook, bookController.updateBook);
 
 router.delete('/:id', bookRequest.checkBook, bookController.deleteBook);
 
+router.get('/get', bookController.joinBook);
+
 module.exports = router;

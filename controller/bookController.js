@@ -1,9 +1,15 @@
-// const BookRepository = require('../book/BookRepository');
 class BookController {
 
     showBook(req, res, next) {
         const bookRepository = req.app.get('repo');
         bookRepository.show()
+            .then(data => res.send(data))
+            .catch(next);
+    }
+
+    joinBook(req, res, next) {
+        const bookRepository = req.app.get('repo');
+        bookRepository.join()
             .then(data => res.send(data))
             .catch(next);
     }
