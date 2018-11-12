@@ -1,0 +1,14 @@
+<html lang="en">
+<head>
+    <title>Book</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <section>
+        {% for book in books %}
+        <a>{{book.getAuthor}}</a>
+        {% endfor %}
+    </section>
+</body>
+</html>
