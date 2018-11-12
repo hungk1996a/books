@@ -28,18 +28,21 @@ class BookRepository {
 
     delete(book) {
         return this.knex('books').where({id: book.getId()})
-            .del();
+            .update({
+                deleted_at: new Date()
+            });
     }
 
     show() {
-        return this.knex('books').select();
+        return this.knex('books').select().where('deleted_at', null);
     }
 
-    join() {
-        return this.knex.select().from('books').leftJoin('publisher', function () {
-            this.on('publisher.id', '=','publisher_id')
-        })
-            .then(data => data.map(element => {return bookFactory.makeFromDB(element)})
-    )}
+    joinDB() {
+        return this.knex.select('books.id', 'books.title', 'books.author', 'books.publisher_id',
+            'books.price', 'publisher.name', 'publisher.address').from('books').leftJoin('publisher', 'publisher_id', 'publisher.id').where('deleted_at', null)
+            .then(data => data.map(element => {
+                return bookFactory.makeFromDB(element)
+            }))
+    }
 }
 module.exports = BookRepository;

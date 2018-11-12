@@ -9,10 +9,13 @@ class Searcher {
     search(condition) {
         let factory = this.factory;
         let sqlQuery = this.connection
-        .select('books.id', 'books.title', 'books.author', 'books.publisher_id', 'books.price', 'publisher.name', 'publisher.address')
+            .select('books.id', 'books.title', 'books.author', 'books.publisher_id',
+                'books.price', 'publisher.name', 'publisher.address')
             .from('books').leftJoin('publisher', 'publisher_id', 'publisher.id');
+
         condition.describe(sqlQuery);
-        return sqlQuery.then(data => data.map(element => factory.makeFromDB(element)));
-        }
+
+        return sqlQuery.then(data => data.map(element => factory.makeFromDB(element)) );
+    }
 }
 module.exports = Searcher;

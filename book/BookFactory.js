@@ -20,6 +20,7 @@ class BookFactory {
         const book = new Book(bookRaw.title);
         book.setAuthor(bookRaw.author);
         book.setPrice(bookRaw.price);
+        book.setId(bookRaw.id);
         const publisher = new Publisher(bookRaw.name);
         publisher.setId(bookRaw.publisher_id);
         publisher.setAddress(bookRaw.address);

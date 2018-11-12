@@ -2,13 +2,74 @@
 <head>
     <title>Book</title>
     <meta charset="UTF-8">
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/javascript/jsBook.js" type="text/javascript"></script>
 </head>
 
 <body>
+<nav>
+    <form>
+        <a href="/">Home</a> |
+        <a href="/books">Books</a>
+    </form>
+
+    <input name="keyword" id="keyword" placeholder="Search">
+    <button type="submit" id="search" ">Search</button>
+    <input id="title" name="title" placeholder="Title">
+    <input id="author" name="author" placeholder="Author">
+    <input id="publisher" name="publisher" placeholder="Publisher">
+    <button id="searchAdvance" type="submit">Search Advance</button>
+
+    <form>
+        <a href="/create">Create Book</a>
+    </form>
     <section>
-        {% for book in books %}
-        <a>{{book.getAuthor}}</a>
-        {% endfor %}
+        <button id="showBooks" type="button" >show books</button>
+        <table>
+            <thead>
+            <tr>
+                <th rowspan="2">Title</th>
+                <th rowspan="2">author</th>
+                <th rowspan="2">price</th>
+                <th colspan="2">publisher</th>
+            </tr>
+            <tr>
+                <th>name</th>
+                <th>address</th>
+            </tr>
+            </thead>
+            <tbody id="book-list">
+
+            </tbody>
+        </table>
+
+        <script id="bookTemplate" type="text/html">
+            <tr>
+                <td>:bookTitle:</td>
+                <td>:bookAuthor:</td>
+                <td>:bookPrice:</td>
+                <td>:publisherName:</td>
+                <td>:publisherAddress:</td>
+            </tr>
+        </script>
+
     </section>
+</nav>
 </body>
+
 </html>

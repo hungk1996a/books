@@ -5,16 +5,20 @@ const BookController = require('../controller/bookController');
 const bookController = new BookController;
 
 router.get('/', bookController.showBook);
+router.get('/show', bookController.showBooks);
 
-router.post('/', bookRequest.checkBook, bookController.createBook);
+router.post('/book', bookRequest.checkBook, bookController.createBook);
 
-router.put('/:id', bookRequest.checkBook, bookController.updateBook);
+router.post('/edit/:id', bookRequest.checkBook, bookController.updateBook);
 
-router.delete('/:id', bookRequest.checkBook, bookController.deleteBook);
-
+router.get('/delete/:id', bookRequest.checkBook, bookController.deleteBook);
 router.get('/books', bookRequest.checkSearch, bookController.search);
-router.get('/book/:id', bookRequest.checkSearch, bookController.search);
-router.get('/search-advance', bookRequest.checkSearch, bookController.search);
-router.get('/search-basic', bookRequest.checkSearch, bookController.search);
+router.get('/search-advance', bookRequest.checkSearch, bookController.searchBook);
+router.get('/search-basic', bookRequest.checkSearch, bookController.searchBook);
 
+router.get('/create', bookController.renderAddBook);
+router.get('/book/:id', bookRequest.checkSearch, bookController.detail);
+router.post('/book/:id', bookRequest.checkSearch, bookController.showBooks);
+router.get('/edit/:id', bookRequest.checkSearch, bookController.renderEditBook);
+router.get('/listBook', bookRequest.checkSearch, bookController.showBooks);
 module.exports = router;

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>edit</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <nav>
+            <form>
+                <a href="/">home</a>
+                <a href="/books">books</a>
+            </form>
+            <!--<form action="/search-basic" method="get">-->
+                <!--<input type="text" name="keyword" placeholder="keyword">-->
+                <!--<button type="submit">Search</button>-->
+            <!--</form>-->
+            <!--<form action="/search-advance" method="get">-->
+                <!--<input type="text" name="title" placeholder="title">-->
+                <!--<input type="text" name="author" placeholder="author">-->
+                <!--<input type="text" name="publisher" placeholder="publisher">-->
+                <!--<button type="submit">search advance</button>-->
+            <!--</form>-->
+            <form action="/edit/{{book.getId()}}" method="post">
+                <input type="text" name="title" value="{{book.getTitle()}}" placeholder="title">
+                <input type="text" name="author" value="{{book.getAuthor()}}" placeholder="author">
+                <label for="publisher">publisher</label>
+                <select name="publisher_id" id="publisher">
+                    {% for publisher in publishers %}
+                    {% if book.getPublisher().getId() === publisher.getId() %}
+                    <option value="{{book.getPublisher().getId()}}" selected>{{book.getPublisher().getName()}}</option>
+                    {% else %}
+                    <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                <input type="number" name="price" value="{{book.getPrice()}}" placeholder="price">
+                <button type="submit">Edit</button>
+            </form>
+        </nav>
+    </body>
+</html>

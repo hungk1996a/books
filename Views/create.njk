@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>create</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<nav>
+    <form>
+        <a href="/">home</a>
+        <a href="/books">books</a>
+    </form>
+    <!--<form action="search-basic" method="get">-->
+    <!--<input type="text" placeholder="keyword" name="keyword">-->
+    <!--<button type="submit">Search</button>-->
+    <!--</form>-->
+    <!--<form action="search-advance" method="get">-->
+    <!--<input type="text" name="title" placeholder="title">-->
+    <!--<input type="text" name="author" placeholder="author">-->
+    <!--<input type="text" name="publisher" placeholder="publisher">-->
+    <!--<button type="submit">Search Advance</button>-->
+    <!--</form>-->
+
+</nav>
+<section>
+    <label>Title:</label>
+    <input id="titleCreate" type="text" name="title" placeholder="title">
+    <label>Author:</label>
+    <input id="authorCreate" type="text" name="author" placeholder="author">
+    <label for="publisher">Publisher:</label>
+    <select name="publisher_id" id="publisher">
+        {% for publisher in publishers %}
+        <option value="{{publisher.getId()}}">{{publisher.getName()}}</option>
+        {% endfor %}
+    </select>
+    <label>Price:</label>
+    <input id="priceCreate" type="number" name="price" placeholder="price">
+    <button onclick="createBook()" type="submit">create</button>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
